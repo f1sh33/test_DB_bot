@@ -26,6 +26,7 @@ client.on('messageCreate', async (message) => {
 
             if (args[0] == "s-sreg"){
                 channel.send("<@" + message.author.id + "> đã đăng ký bài ***" + args[1] + "*** !");
+                //Viết 1 bài vào database
                 Song.create({
                     requestID: message.id,
                     authorId: message.author.id,
@@ -34,6 +35,7 @@ client.on('messageCreate', async (message) => {
             }
 
             if (args[0] == "s-listsong"){
+                //Đọc tất cả các bài hát từ database
                 let all_songs = await Song.findAll();
                 payload = ""
                 for (song of all_songs){
